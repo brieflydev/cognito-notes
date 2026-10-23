@@ -1,0 +1,14 @@
+{
+  "name": "notes-triggers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "3.1141.0",
+    "@types/aws-lambda": "8.10.163",
+    "@types/node": "22.20.4",
+    "typescript": "6.0.3"
+  }
+}
