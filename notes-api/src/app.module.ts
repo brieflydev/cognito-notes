@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { CognitoAuthGuard } from './auth/cognito-auth.guard.js';
+import { GroupsGuard } from './auth/groups.guard.js';
 import { NotesController } from './notes/notes.controller.js';
 import { NotesService } from './notes/notes.service.js';
 
 @Module({
   controllers: [NotesController],
-  providers: [NotesService, { provide: APP_GUARD, useClass: CognitoAuthGuard }],
+  providers: [
+    NotesService,
+    { provide: APP_GUARD, useClass: CognitoAuthGuard },
+    { provide: APP_GUARD, useClass: GroupsGuard },
+  ],
 })
 export class AppModule {}

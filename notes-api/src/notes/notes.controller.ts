@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
 import type { CognitoAccessTokenPayload } from 'aws-jwt-verify/jwt-model';
-import { CurrentUser, Public } from '../auth/auth.decorators.js';
+import { CurrentUser, Public, Groups } from '../auth/auth.decorators.js';
 import { NotesService } from './notes.service.js';
 
 @Controller()
@@ -37,5 +37,11 @@ export class NotesController {
       throw new BadRequestException('text is required');
     }
     return this.notesService.create(user.sub, String(user.email ?? user.username), text);
+  }
+
+  @Groups(['admin'])
+  @Get('admin/notes')
+  allNotes() {
+    return this.notesService.findAll();
   }
 }
