@@ -1,0 +1,1 @@
+Welcome to the Notes app! This file was read with temporary AWS credentials from a Cognito identity pool.
